@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  # Routes for the Users page
+  get("/", { :controller => "users", :action => "index" })
+  get("/users", {:controller => "users", :action => "index"})
+  get("/users/:the_username", {:controller => "users", :action => "show"})
+
+
+  
   # Routes for the Comment resource:
 
   # CREATE
