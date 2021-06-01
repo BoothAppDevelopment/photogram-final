@@ -4,6 +4,7 @@ class PhotosController < ApplicationController
     # matching_photos = Photo.where({ :owner_id.private => "false"})
 
     @list_of_photos = matching_photos.order({ :created_at => :desc })
+    @user_id = session.fetch(:user_id)
 
     render({ :template => "photos/index.html.erb" })
   end
@@ -23,12 +24,7 @@ class PhotosController < ApplicationController
     the_photo = Photo.new
     the_photo.caption = params.fetch("query_caption")
     the_photo.image = params.fetch("query_image")
-    the_photo.owner_id = params.fetch("query_owner_id")
-    the_photo.location = params.fetch("query_location")
-    the_photo.comments_count = params.fetch("query_comments_count")
-    the_photo.likes_count = params.fetch("query_likes_count")
-    the_photo.likes_count = params.fetch("query_likes_count")
-    the_photo.comments_count = params.fetch("query_comments_count")
+    the_photo.owner_id = session.fetch(:user_id)
 
     if the_photo.valid?
       the_photo.save

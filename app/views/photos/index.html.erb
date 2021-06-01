@@ -1,14 +1,16 @@
 <h1>List of photos</h1>
 
-<form action="/insert_photo_record">
-  <label for="browser_input">Image</label>
-  <input id="browser_input" type="text" name="input_image" placeholder="Enter a URL for the image...">
+<% if @user_id != nil %>
+  <form action="/insert_photo" method="post">
+    <label for="browser_input">Image</label>
+    <input id="browser_input" type="text" name="query_image" placeholder="Enter a URL for the image...">
 
-  <label for="browser_caption">Caption</label>
-  <textarea id="browser_caption" name="input_caption" placeholder="Enter a caption for the photo..."></textarea>
+    <label for="browser_caption">Caption</label>
+    <textarea id="browser_caption" name="query_caption" placeholder="Enter a caption for the photo..."></textarea>
 
-  <button>Add photo</button>
-</form>
+    <button>Add photo</button>
+  </form>
+<% end %>
 
 <hr>
 
