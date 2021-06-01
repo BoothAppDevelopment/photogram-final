@@ -2,6 +2,15 @@
 <h1><%= @user.username %></h1>
 
 <dl>
+  <dt>Private</dt>
+  <dd><%= @user.private %></dd>
+  
+  <dt>Followers</dt>
+  <dd><%= @user.followers.count %></dd>
+  
+  <dt>Following</dt>
+  <dd><%= @user.following.count %></dd>
+
   <dt>ID</dt>
   <dd><%= @user.id %></dd>
 
@@ -54,7 +63,7 @@
     </td>
 
     <td>
-      <%= photo.created_at %>
+      <%= time_ago_in_words(photo.created_at) %> ago
     </td>
     
     <td>
