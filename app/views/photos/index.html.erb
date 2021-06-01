@@ -22,30 +22,29 @@
   </tr>
 
   <% @list_of_photos.each do |photo| %>
-  <tr>
-    <td>
-      <img src="<%= photo.image %>">
-    </td>
+      <tr>
+        <td>
+          <img src="<%= photo.image %>">
+        </td>
 
-    <td>
-      <%= photo.caption %>
-    </td>
+        <td>
+          <%= photo.caption %>
+        </td>
 
-    <td>
-      <%= photo.poster.username %>
-    </td>
+        <td>
+          <%= photo.poster.username %>
+        </td>
 
-    <td>
-      <%= photo.created_at %>
-    </td>
+        <td>
+          <%= photo.created_at %>
+        </td>
 
-    <td>
-      <a href="/photos/<%= photo.id %>">
-        Show details
-      </a>
-    </td>
-  </tr>
-  
+        <td>
+          <a href="/photos/<%= photo.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
   <% end %>
 </table>
 
