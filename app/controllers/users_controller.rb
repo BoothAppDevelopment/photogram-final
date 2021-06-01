@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all.order({ :username => :asc })
+    @user_id = session.fetch(:user_id)
 
     render({ :template => "users/index.html.erb" })
   end

@@ -10,6 +10,10 @@
     <th>
       Private?
     </th>
+    
+    <th>
+      
+    </th>
 
     <th></th>
   </tr>
@@ -27,6 +31,19 @@
         No
       <% end %>
     </td>
+
+    <% if @user_id != nil %>
+      <% if user.followers.where({ :sender_id => @user_id}) %>
+        <td>
+          <form action="/insert_follow_request" method="post">
+            <input id="recipient_id" type="hidden" value="<%= user.id %>" name="query_recipient_id">
+            <input id="request_status" type="hidden" value="accepted" name="query_status">
+            <button>Follow</button>
+          </form>
+        </td>
+
+      <% end %>
+    <% end %>
 
     <td>
       <a href="/users/<%= user.username %>">Show details</a>

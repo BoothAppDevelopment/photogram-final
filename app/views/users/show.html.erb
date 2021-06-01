@@ -1,6 +1,22 @@
 
 <h1><%= @user.username %></h1>
 
+<% if @user.id != session.fetch(:user_id) %>
+  <td>
+    <form action="/insert_follow_request" method="post">
+      <input id="recipient_id" type="hidden" value="<%= @user.id %>" name="query_recipient_id">
+      <input id="request_status" type="hidden" value="accepted" name="query_status">
+      <button>Follow</button>
+    </form>
+  </td>
+<% end %>
+
+<% if @user.id != session.fetch(:user_ID) && @user.followers.where({ :id => session.fetch(:user_id)}) != nil %>
+  <div>
+    <a href="">Unfollow</a>
+  </div>
+<% end %>
+
 <dl>
   <dt>Private</dt>
   <dd><%= @user.private %></dd>
