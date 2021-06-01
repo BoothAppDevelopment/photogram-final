@@ -36,12 +36,12 @@
       <% if @user_id != nil %>
         <% if user.followers.where({ :id => @user_id}) != nil && user.id != @user_id %>
             <a href="">Unfollow</a>
-        <% else %>  
-            <form action="/insert_follow_request" method="post">
-              <input id="recipient_id" type="hidden" value="<%= user.id %>" name="query_recipient_id">
-              <input id="request_status" type="hidden" value="accepted" name="query_status">
-              <button>Follow</button>
-            </form>  
+            
+              <form action="/insert_follow_request" method="post">
+                <input id="recipient_id" type="hidden" value="<%= user.id %>" name="query_recipient_id">
+                <input id="request_status" type="hidden" value="accepted" name="query_status">
+                <button>Follow</button>
+              </form>  
         <% end %>
       <% end %>
     </td>
