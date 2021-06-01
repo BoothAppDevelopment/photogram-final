@@ -12,6 +12,7 @@ class PhotosController < ApplicationController
 
     matching_photos = Photo.where({ :id => the_id })
 
+    @photo = matching_photos.at(0)
     @the_photo = matching_photos.at(0)
 
     render({ :template => "photos/show.html.erb" })
