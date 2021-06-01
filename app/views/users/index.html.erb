@@ -4,11 +4,11 @@
 <table border="1">
   <tr>
     <th>
-      ID
+      Username
     </th>
 
     <th>
-      Username
+      Private?
     </th>
 
     <th></th>
@@ -17,11 +17,11 @@
   <% @users.each do |user| %>
   <tr>
     <td>
-      <%= user.id %>
+      <%= user.username %>
     </td>
 
     <td>
-      <%= user.username %>
+      <%= user.private %>
     </td>
 
     <td>
