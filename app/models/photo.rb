@@ -23,6 +23,10 @@ class Photo < ApplicationRecord
 
   has_many(:comments, { :class_name => "Comment", :foreign_key => "photo_id", :dependent => :destroy })
 
+  def poster
+    return User.where({ :id => self.owner_id }).at(0)
+  end
+
   # Indirect associations
   has_many(:fans, { :through => :likes, :source => :user })
 
