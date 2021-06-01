@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def show
     the_username = params.fetch("the_username")
     @user = User.where({ :username => the_username }).at(0)
+    @user_id = session.fetch(:user_id)
 
     render({ :template => "users/show.html.erb" })
   end

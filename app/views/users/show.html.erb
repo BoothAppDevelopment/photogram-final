@@ -14,15 +14,17 @@
   <dt>ID</dt>
   <dd><%= @user.id %></dd>
 
-  <dt>Edit user</dt>
-  <dd>
-    <form action="/update_user/<%= @user.id %>" >
-      <label for="browser_username">Username</label>
-      <input id="browser_username" type="text" name="input_username" placeholder="Enter a username..." value="<%= @user.username %>">
+  <% if @user.id == @user_id %>
+    <dt>Edit user</dt>
+    <dd>
+      <form action="/update_user/<%= @user.id %>" >
+        <label for="browser_username">Username</label>
+        <input id="browser_username" type="text" name="input_username" placeholder="Enter a username..." value="<%= @user.username %>">
 
-      <button>Update user</button>
-    </form>
-  </dd>
+        <button>Update user</button>
+      </form>
+    </dd>
+  <% end %>
 </dl>
 
 <h2>Own photos (<%= @user.own_photos.count %>)</h2>
@@ -45,6 +47,10 @@
       Posted
     </th>
 
+    <th>
+      Likes
+    </th>
+
     <th></th>
   </tr>
 
@@ -64,6 +70,10 @@
 
     <td>
       <%= time_ago_in_words(photo.created_at) %> ago
+    </td>
+
+    <td>
+      <%= photo.likes.count %>
     </td>
     
     <td>
